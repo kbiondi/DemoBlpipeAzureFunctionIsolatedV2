@@ -195,9 +195,6 @@ module RefDataExample =
   let registerCallback level =
     Logging.RegisterCallback(LoggingCallback(), level)
 
-  // [<EntryPoint>]
-  // let main args =
-    // BLPAPI logging
   registerCallback TraceLevel.Warning
 
   let options = setOptions serverHost serverPort appName
@@ -208,17 +205,16 @@ module RefDataExample =
   | true -> ()
   | false -> printfn "Failed to start session"
 
-  // match dSession.OpenService requestService with
-  // | true -> () 
-  // | false -> Console.Error.WriteLine("Failed to open " + requestService)
-  //             dSession.Stop()
+  match dSession.OpenService requestService with
+  | true -> () 
+  | false -> (*Console.Error.WriteLine("Failed to open " + requestService)*)
+              dSession.Stop()
 
   let result = createRequest dSession requestService |> 
                 createSecuritiesRequestList |> 
                 sendRequests dSession |>
                 handleEvents
   
-  List.iter (printfn "%A") result
+  // List.iter (printfn "%A") result
 
   dSession.Stop()
-  0
