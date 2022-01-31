@@ -208,10 +208,10 @@ module RefDataExample =
   | true -> ()
   | false -> printfn "Failed to start session"
 
-  match dSession.OpenService requestService with
-  | true -> () 
-  | false -> Console.Error.WriteLine("Failed to open " + requestService)
-              dSession.Stop()
+  // match dSession.OpenService requestService with
+  // | true -> () 
+  // | false -> Console.Error.WriteLine("Failed to open " + requestService)
+  //             dSession.Stop()
 
   let result = createRequest dSession requestService |> 
                 createSecuritiesRequestList |> 
