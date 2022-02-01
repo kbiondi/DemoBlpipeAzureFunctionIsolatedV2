@@ -1,0 +1,18 @@
+{
+  "cusips": [
+    "912810SX Govt",
+    "912810SZ Govt",
+    "912810TA Govt",
+    "91282CCS Govt",
+    "SHAZAM",
+    "Hello"
+  ],
+  "mnemonics": [
+    "NAME",
+    "MTY_YEARS",
+    "CRNCY",
+    "BVAL_CONVERTIBLE_OPTION_VALUE",
+    "BLAH_BLAH_BLAH",
+    "F# is awesome!"
+  ]
+}

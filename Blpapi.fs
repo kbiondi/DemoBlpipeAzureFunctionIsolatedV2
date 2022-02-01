@@ -5,6 +5,7 @@ open System.Diagnostics
 open System
 open FSharp.Json
 open Schemas
+open Input
 
 module RefDataExample =
 
@@ -82,8 +83,8 @@ module RefDataExample =
   let createSecuritiesRequestList (request:Request) =
     let securities = request["securities"]
     let fields = request["fields"]
-    let cusips = ["912810SX Govt"; "912810SZ Govt"; "912810TA Govt"; "91282CCS Govt"; "SHAZAM"; "Hello"]
-    let mnemonics = ["NAME"; "MTY_YEARS"; "CRNCY"; "BVAL_CONVERTIBLE_OPTION_VALUE"; "BLAH_BLAH_BLAH"; "F# is awesome!"]
+    let cusips = Array.toList parameters.Cusips
+    let mnemonics = Array.toList parameters.Mnemonics
     List.iter (fun x -> securities.AppendValue(x:string)) cusips
     List.iter (fun x -> fields.AppendValue(x:string)) mnemonics
     [request]
@@ -203,11 +204,12 @@ module RefDataExample =
 
   match dSession.Start() with
   | true -> ()
-  | false -> printfn "Failed to start session"
+  | false -> () //printfn "Failed to start session" // log should record this. check later..
 
   match dSession.OpenService requestService with
   | true -> () 
-  | false -> (*Console.Error.WriteLine("Failed to open " + requestService)*)
+  | false -> // Console.Error.WriteLine("Failed to open " + requestService)
+             // log should record this. check later...
               dSession.Stop()
 
   let result = createRequest dSession requestService |> 
