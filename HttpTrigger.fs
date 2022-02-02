@@ -4,7 +4,7 @@ open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Logging
 open Microsoft.Azure.Functions.Worker.Http
 open Microsoft.Azure.Functions.Worker
-open Bloomberglp.Blpapi.Examples.RefDataExample
+open Output
 
 module HttpTrigger =
     
@@ -16,5 +16,6 @@ module HttpTrigger =
             executionContext.GetLogger("HttpFunction")
                 .LogInformation("F# HTTP trigger function processed a request.")
 
-            return OkObjectResult(result) :> IActionResult
+            return OkObjectResult(outputBlob.UploadAsync(blpipeOutput)) :> IActionResult
+            
         } |> Async.StartAsTask

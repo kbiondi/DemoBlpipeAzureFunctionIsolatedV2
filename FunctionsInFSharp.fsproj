@@ -9,6 +9,7 @@
     <Compile Include="Input.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="Blpapi.fs" />
+    <Compile Include="Output.fs" />
     <Compile Include="HttpTrigger.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
