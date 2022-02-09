@@ -16,6 +16,6 @@ module HttpTrigger =
             executionContext.GetLogger("HttpFunction")
                 .LogInformation("F# HTTP trigger function processed a request.")
 
-            return OkObjectResult(outputBlob.UploadAsync(blpipeOutput)) :> IActionResult
+            return OkObjectResult(outputBlob.UploadAsync(blpipeOutput, overwrite=true)) :> IActionResult
             
         } |> Async.StartAsTask
