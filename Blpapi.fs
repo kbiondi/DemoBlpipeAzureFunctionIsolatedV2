@@ -31,7 +31,7 @@ module RefDataExample =
     let options = SessionOptions()
     options.ServerHost <- host
     options.ServerPort <- port
-    options.AuthenticationOptions <- "AuthenticationMode=APPLICATION_ONLY;ApplicationAuthenticationType=APPNAME_AND_KEY;ApplicationName=CALPERS:Workspace"
+    options.AuthenticationOptions <- "AuthenticationMode=APPLICATION_ONLY;ApplicationAuthenticationType=APPNAME_AND_KEY;ApplicationName=XXXXX:Workspace"
     let authOptions = AuthOptions(AuthApplication(name))
     let dAuthCorrelationId = CorrelationID("authCorrelation")
     options.SetSessionIdentityOptions(authOptions, dAuthCorrelationId) |> ignore
